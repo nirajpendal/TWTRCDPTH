@@ -15,6 +15,7 @@ class TweetsViewController: UIViewController {
     var selectedTweet: Int?
     let client = TwitterClient.sharedInstance
     let refreshControl = UIRefreshControl()
+    let activityIndicator = ActivityIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +29,22 @@ class TweetsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(fetchTweets), for: UIControlEvents.valueChanged)
         self.tweetTableView.refreshControl = refreshControl
         
-        client.currentUser(success: { (user:User) in
-            print(user.name!)
-            
-        }, failure: { (error: Error) in
-            print(error.localizedDescription)
-        })
-        
         fetchTweets()
         
         let rightBarItem = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(rightButtonPressed))
-        UIBarButtonItem.appearance().setTitleTextAttributes(["NSForegroundColorAttributeName": UIColor.white], for: UIControlState.normal)
-        
         self.navigationItem.rightBarButtonItem = rightBarItem
+        rightBarItem.tintColor = UIColor.white// titleTextAttributes(for: UIControlState.normal)
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
 
         
         // Do any additional setup after loading the view.
+    }
+    
+    func  displayError(message:String)  {
+        let alertView = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
     }
 
     func rightButtonPressed(){
@@ -51,8 +52,17 @@ class TweetsViewController: UIViewController {
         self.performSegue(withIdentifier: "NewTweetSegue", sender: nil)
     }
     
+    func presentIndicator()  {
+        self.activityIndicator.showActivityIndicator(uiView: (self.navigationController?.view)!)
+        //self.activityIndicator.startAnimating()
+    }
+    
+    func hideIndicator()  {
+        self.activityIndicator.hideActivityIndicator(view: (self.navigationController?.view)!)
+    }
     
     func fetchTweets()  {
+        self.presentIndicator()
         client.getTweets(success: {[weak self] (tweets: [Tweet]) in
             
             guard let strognSelf = self else {
@@ -63,11 +73,19 @@ class TweetsViewController: UIViewController {
             strognSelf.tweetTableView.reloadData()
             strognSelf.refreshControl.endRefreshing()
             
+            self?.hideIndicator()
+            
         }) { [weak self] (error:Error) in
             print(error.localizedDescription)
             self?.refreshControl.endRefreshing()
+            
+            self?.displayError(message: error.localizedDescription)
+            
+            self?.hideIndicator()
         }
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

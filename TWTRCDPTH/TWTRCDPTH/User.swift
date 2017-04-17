@@ -20,6 +20,8 @@ class User {
     var tweets:[Tweet]?
     private static var _currentUser:User?
     
+    static let userDidLogOutNotificationKey = "userDidLogOutNotification"
+    
     var _dictionary:[String:AnyObject]?
     
     init(dictionary: [String:AnyObject]) {

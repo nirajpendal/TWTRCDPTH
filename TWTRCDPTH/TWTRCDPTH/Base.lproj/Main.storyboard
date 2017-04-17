@@ -190,7 +190,11 @@
                             <constraint firstItem="rVw-SP-gdk" firstAttribute="top" secondItem="6Xj-GL-QIY" secondAttribute="top" id="zma-q8-PXk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nOk-iF-Lc6"/>
+                    <navigationItem key="navigationItem" id="nOk-iF-Lc6">
+                        <barButtonItem key="leftBarButtonItem" title="LogOut" id="NwB-fB-KEZ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tweetTableView" destination="rVw-SP-gdk" id="e40-fm-bKl"/>
                         <segue destination="rMk-b5-P9h" kind="show" identifier="DetailsSegue" id="KPz-7s-vlT"/>
@@ -226,16 +230,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amd-sq-xgY">
-                                <rect key="frame" x="91" y="104" width="35.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amd-sq-xgY">
+                                <rect key="frame" x="91" y="101" width="35.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cet-4b-YjD">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cet-4b-YjD">
                                 <rect key="frame" x="8" y="155" width="359" height="268"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -245,8 +249,8 @@
                             <constraint firstItem="qdq-Z9-fcW" firstAttribute="leading" secondItem="yAk-zb-YdA" secondAttribute="trailing" constant="8" id="8TS-xQ-XVs"/>
                             <constraint firstAttribute="trailing" secondItem="cet-4b-YjD" secondAttribute="trailing" constant="8" id="AYm-CO-Xyd"/>
                             <constraint firstItem="amd-sq-xgY" firstAttribute="leading" secondItem="yAk-zb-YdA" secondAttribute="trailing" constant="8" id="OyV-JT-LI8"/>
+                            <constraint firstItem="amd-sq-xgY" firstAttribute="top" secondItem="qdq-Z9-fcW" secondAttribute="bottom" constant="8" id="R0U-eb-knJ"/>
                             <constraint firstItem="qdq-Z9-fcW" firstAttribute="top" secondItem="Ofz-rE-Jmb" secondAttribute="bottom" constant="8" id="WFV-qo-8M5"/>
-                            <constraint firstItem="amd-sq-xgY" firstAttribute="top" secondItem="qdq-Z9-fcW" secondAttribute="bottom" constant="8" id="ZAx-N1-A7D"/>
                             <constraint firstItem="QxW-kb-h6x" firstAttribute="top" secondItem="cet-4b-YjD" secondAttribute="bottom" constant="200" id="asp-PX-7YM"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qdq-Z9-fcW" secondAttribute="trailing" constant="8" id="hhc-GL-Vsd"/>
                             <constraint firstItem="yAk-zb-YdA" firstAttribute="leading" secondItem="tiI-OY-laE" secondAttribute="leading" constant="8" id="jMa-Zv-fhq"/>
@@ -457,10 +461,11 @@
             <objects>
                 <navigationController storyboardIdentifier="TweetNavigationStoryBoardId" automaticallyAdjustsScrollViewInsets="NO" id="u6n-6n-Uqh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XAt-qG-NwB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="XAt-qG-NwB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.060401692986488342" green="0.71761828660964966" blue="0.96334058046340942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.015522203408181667" green="0.67660492658615112" blue="0.98422044515609741" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

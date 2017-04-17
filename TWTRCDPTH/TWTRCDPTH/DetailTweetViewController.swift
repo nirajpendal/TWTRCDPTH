@@ -37,8 +37,12 @@ class DetailTweetViewController: UIViewController {
         self.profileNameLabel.text = tweet?.profileName
         self.profileUsernameLabel.text = tweet.profileUserName
         
-       self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reply", style: .plain, target: self, action: #selector(replyButtonPressed))
+        self.navigationController?.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         
+        let rightBarButton = UIBarButtonItem(title: "Reply", style: .plain, target: self, action: #selector(replyButtonPressed))
+        
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        rightBarButton.tintColor = UIColor.white
         
         // Do any additional setup after loading the view.
     }
