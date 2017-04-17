@@ -455,9 +455,9 @@
         <!--Navigation Controller-->
         <scene sceneID="eRx-Wb-BLU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u6n-6n-Uqh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetNavigationStoryBoardId" automaticallyAdjustsScrollViewInsets="NO" id="u6n-6n-Uqh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="XAt-qG-NwB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XAt-qG-NwB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.060401692986488342" green="0.71761828660964966" blue="0.96334058046340942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
