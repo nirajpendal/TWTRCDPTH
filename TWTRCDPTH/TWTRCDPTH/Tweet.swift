@@ -10,6 +10,9 @@ import Foundation
 
 class Tweet {
     
+    var profileUserName: String?
+    var profileImageUrl: URL?
+    var profileName: String?
     var createdAt: String?
     var text: String?
     var timeStamp: Date?
@@ -28,6 +31,14 @@ class Tweet {
         }
         reTweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favouriteCount = (dictionary["favourites_count"] as? Int) ?? 0
+        if let tweetUser = dictionary["user"] as? [String: Any] {
+            if let profileImageUrlString = tweetUser["profile_image_url_https"] as? String {
+                profileImageUrl = URL(string: profileImageUrlString)
+            }
+            
+            profileName = tweetUser["name"] as? String
+            profileUserName = tweetUser["screen_name"] as? String
+        }
     }
     
     static func getTweets(dictionaries:[[String:AnyObject]]) -> [Tweet] {

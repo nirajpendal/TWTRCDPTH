@@ -15,6 +15,8 @@ class User {
     var profileURL: URL?
     var screenName: String?
     
+    var tweets:[Tweet]?
+    
     init(dictionary: [String:AnyObject]) {
         
         name = dictionary ["name"] as? String

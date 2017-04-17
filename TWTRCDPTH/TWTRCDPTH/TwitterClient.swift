@@ -22,6 +22,7 @@ class TwitterClient:BDBOAuth1SessionManager {
     
     private var loginSuccessClousure:(()->())?
     private var loginFailureClousure:((Error)->())?
+    private var _currentUser:User?
     
     func login(success: @escaping ()->(), failure: @escaping (Error)->()) {
         
@@ -58,11 +59,17 @@ class TwitterClient:BDBOAuth1SessionManager {
     
     func currentUser(success: @escaping (User) -> (), failure: @escaping (Error) -> ()){
         
+        if let currentUser = self._currentUser {
+            success(currentUser)
+            return
+        }
+        
         self.get(TwitterClient.baseURL+"/1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (taks:URLSessionDataTask, response:Any?) in
             
             let responseDict = response as! [String:AnyObject]
             let user  = User(dictionary: responseDict)
             
+            self._currentUser = user
             success(user)
             
             
@@ -88,6 +95,20 @@ class TwitterClient:BDBOAuth1SessionManager {
         })
         
         
+        
+    }
+    
+    func postTweet(text: String, completionHandler:@escaping (Bool, Error?)->()) {
+        
+        let paramter = ["status":text]
+        
+        self.post(TwitterClient.baseURL+"/1.1/statuses/update.json", parameters: paramter, progress: nil, success: { (task:URLSessionDataTask, response: Any) in
+            print("Success")
+            completionHandler(true, nil)
+        }) { (task:URLSessionDataTask?, error:Error) in
+            print("Posting failed")
+            completionHandler(false, error)
+        }
         
     }
     

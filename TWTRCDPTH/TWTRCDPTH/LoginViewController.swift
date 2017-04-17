@@ -44,23 +44,7 @@ class LoginViewController: UIViewController {
         
         client.login(success: {
             
-            client.currentUser(success: { (user:User) in
-                print(user.name!)
-            }, failure: { (error: Error) in
-                print(error.localizedDescription)
-            })
-            
-            client.getTweets(success: { (tweets: [Tweet]) in
-                
-                for tweet in tweets {
-                    print(tweet.text!)
-                }
-                
-            }) { (error:Error) in
-                print(error.localizedDescription)
-            }
-            
-
+            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             
         }) { (error:Error) in
             print(error.localizedDescription)
