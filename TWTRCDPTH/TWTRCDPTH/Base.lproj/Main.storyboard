@@ -193,6 +193,9 @@
                     <navigationItem key="navigationItem" id="nOk-iF-Lc6">
                         <barButtonItem key="leftBarButtonItem" title="LogOut" id="NwB-fB-KEZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="logOutTapped:" destination="FFN-Vf-MxL" id="Z3Y-hJ-vHP"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

@@ -57,7 +57,15 @@ class TwitterClient:BDBOAuth1SessionManager {
         
         
         self.fetchAccessToken(withPath: TwitterClient.baseURL+"/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
-            self.loginSuccessClousure?()
+            
+            self.currentUser(success: { (user:User) in
+                
+                self.loginSuccessClousure?()
+                
+            }, failure: { (error:Error) in
+                print(error.localizedDescription)
+                self.loginFailureClousure?(error)
+            })
             
         }, failure: { (error: Error?) in
             print(error!.localizedDescription)
@@ -116,5 +124,5 @@ class TwitterClient:BDBOAuth1SessionManager {
         
     }
     
-
+    
 }

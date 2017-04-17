@@ -41,6 +41,11 @@ class TweetsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func logOutTapped(_ sender: Any) {
+        
+        TwitterClient.sharedInstance.logOut()
+        
+    }
     func  displayError(message:String)  {
         let alertView = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
